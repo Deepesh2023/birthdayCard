@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
+                    BirthdayCard(name = "Deepesh", from = "vaishnu", modifier = Modifier)
                 }
             }
         }
@@ -34,27 +35,22 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BirthdayCard(modifier: Modifier = Modifier, name: String, from: String = "Kind Stranger") {
-
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    Column(modifier = modifier, verticalArrangement = Arrangement.Center) {
         Text(
             text = "Happy birthday $name",
             fontSize = 80.sp,
-            lineHeight = 80.sp,
+            lineHeight = 84.sp,
             textAlign = TextAlign.Center
         )
 
-        Text(text = from, fontSize = 48.sp)
+        Text(text = "from $from", fontSize = 36.sp, modifier = Modifier.padding(16.dp).align(alignment = Alignment.End))
     }
-
 }
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     MyApplicationTheme {
-        BirthdayCard(name = "Deepesh", modifier = Modifier.padding(24.dp))
+        BirthdayCard(name = "Deepesh", modifier = Modifier.padding(8.dp))
     }
 }
